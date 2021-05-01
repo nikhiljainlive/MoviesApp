@@ -30,6 +30,7 @@ class MoviesCategoryTableVC: UITableViewController {
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search movies by title/actor/genre/director"
     }
     
     private func registerCell() {

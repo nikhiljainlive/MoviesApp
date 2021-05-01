@@ -35,9 +35,6 @@ class MovieDataSourceImpl : MovieDataSource {
         func isMovieFound(movie : Movie) -> Bool {
             switch category {
             case .actors:
-//                return !movie.getActorsList().filter { (actor) -> Bool in
-//                    actor.localizedCaseInsensitiveContains(searchString)
-//                }.isEmpty
                 return movie.actors.localizedCaseInsensitiveContains(searchString)
                 
             case .directors: return movie.directors.localizedCaseInsensitiveContains(searchString)
@@ -47,7 +44,7 @@ class MovieDataSourceImpl : MovieDataSource {
             case.genre: return movie.genre.localizedCaseInsensitiveContains(searchString)
                 
             default:
-                return movie.title.localizedCaseInsensitiveContains(searchString) || movie.directors.localizedCaseInsensitiveContains(searchString) || movie.year.localizedCaseInsensitiveContains(searchString) || movie.genre.localizedCaseInsensitiveContains(searchString)
+                return movie.title.localizedCaseInsensitiveContains(searchString) || movie.directors.localizedCaseInsensitiveContains(searchString) || movie.actors.localizedCaseInsensitiveContains(searchString) || movie.genre.localizedCaseInsensitiveContains(searchString)
             }
         }
         

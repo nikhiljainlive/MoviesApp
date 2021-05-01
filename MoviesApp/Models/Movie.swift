@@ -33,6 +33,21 @@ struct Movie : Codable {
         case runtime = "Runtime"
         case releasedDate = "Released"
     }
+    
+    func getActorsList() -> [String] {
+        return actors.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+    
+    func getDirectorsList() -> [String] {
+        return directors.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+    
+    func getGenresList() -> [String] {
+        return genre.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
 }
 
 struct Rating : Codable {

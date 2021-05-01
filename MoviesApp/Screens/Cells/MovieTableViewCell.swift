@@ -7,9 +7,12 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
+class MovieTableViewCell: UITableViewCell, TableViewBindableCell {
+    typealias Item = Movie
     
     static let reuseIdentifier = "MovieTableViewCell"
+    
+    static let nibName: String = "MovieTableViewCell"
     
     @IBOutlet weak var posterImageView: UIImageView!
     
@@ -19,12 +22,12 @@ class MovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var yearLabel: UILabel!
     
-    func bind(movie : Movie) {
+    func bind(item : Movie) {
         posterImageView.image = UIImage(named: "poster-placeholder")
-        loadPosterImage(posterUrl : movie.posterUrl)
-        titleLabel.text = movie.title
-        languageLabel.text = movie.language
-        yearLabel.text = movie.year
+        loadPosterImage(posterUrl : item.posterUrl)
+        titleLabel.text = item.title
+        languageLabel.text = item.language
+        yearLabel.text = item.year
     }
     
     private func loadPosterImage(posterUrl : String) {

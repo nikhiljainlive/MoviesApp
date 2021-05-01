@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Movies Main TableVC-->
+        <!--Movies Category TableVC-->
         <scene sceneID="3Ib-MZ-sND">
             <objects>
-                <tableViewController id="4Sa-QJ-9ov" customClass="MoviesMainTableVC" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4Sa-QJ-9ov" customClass="MoviesCategoryTableVC" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4gU-BN-etb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="811.59420289855075" y="51.5625"/>
         </scene>
-        <!--Movies Table View Controller-->
+        <!--Items Table View Controller-->
         <scene sceneID="nBR-Go-YyB">
             <objects>
-                <tableViewController storyboardIdentifier="MoviesTableVC" id="Oti-8c-00S" customClass="MoviesTableViewController" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MoviesTableVC" id="Oti-8c-00S" customClass="ItemsTableViewController" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="M2f-Wf-fbI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
     </scenes>
     <resources>
         <image name="poster-placeholder" width="300" height="450"/>
-        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star" catalog="system" width="32" height="32"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

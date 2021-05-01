@@ -10,11 +10,15 @@ import Foundation
 protocol MovieDataSource {
     func searchMovies(searchString : String, category : MovieSearchCategory?) -> [Movie]
     func getAllMovies() -> [Movie]
+    func getAllMovieYears() -> [String]
+    func getAllMovieGenres() -> [String]
+    func getAllMovieDirectors() -> [String]
+    func getAllMovieActors() -> [String]
 }
 
 class MovieDataSourceImpl : MovieDataSource {
     private init() {}
-
+    
     static let shared : MovieDataSource = MovieDataSourceImpl()
     
     private lazy var movies : [Movie] = {
@@ -31,6 +35,9 @@ class MovieDataSourceImpl : MovieDataSource {
         func isMovieFound(movie : Movie) -> Bool {
             switch category {
             case .actors:
+//                return !movie.getActorsList().filter { (actor) -> Bool in
+//                    actor.localizedCaseInsensitiveContains(searchString)
+//                }.isEmpty
                 return movie.actors.localizedCaseInsensitiveContains(searchString)
                 
             case .directors: return movie.directors.localizedCaseInsensitiveContains(searchString)
@@ -38,7 +45,7 @@ class MovieDataSourceImpl : MovieDataSource {
             case .year: return movie.year.localizedCaseInsensitiveContains(searchString)
                 
             case.genre: return movie.genre.localizedCaseInsensitiveContains(searchString)
-            
+                
             default:
                 return movie.title.localizedCaseInsensitiveContains(searchString) || movie.directors.localizedCaseInsensitiveContains(searchString) || movie.year.localizedCaseInsensitiveContains(searchString) || movie.genre.localizedCaseInsensitiveContains(searchString)
             }
@@ -49,5 +56,28 @@ class MovieDataSourceImpl : MovieDataSource {
     
     func getAllMovies() -> [Movie] {
         return movies
+    }
+    
+    func getAllMovieGenres() -> [String] {
+        return movies.map { $0.getGenresList() }.flatMap { $0 }.unique()
+    }
+    
+    func getAllMovieDirectors() -> [String] {
+        return movies.map { $0.getDirectorsList() }.flatMap { $0 }.unique()
+    }
+    
+    func getAllMovieActors() -> [String] {
+        return movies.map { $0.getActorsList() }.flatMap { $0 }.unique()
+    }
+    
+    func getAllMovieYears() -> [String] {
+        return movies.map { $0.year }.unique()
+    }
+}
+
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: Set<Iterator.Element> = []
+        return filter { seen.insert($0).inserted }
     }
 }
